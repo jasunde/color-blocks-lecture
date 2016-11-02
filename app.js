@@ -6,12 +6,13 @@ $(document).ready(function () {
         "green",
         "blue"
       ],
-      currentColor = '';
+      currentColor = '',
+      $feedback = $('#feedback');
 
   for (var i = 0; i < colors.length; i++) {
     var $block = $('<div class="color-block"></div>')
       .css('background-color', colors[i])
-      .addClass(colors[i]);
+      .data('color', colors[i]);
 
     $blockContainer.append($block);
   }
@@ -19,12 +20,17 @@ $(document).ready(function () {
   pickColor();
 
   $blockContainer.on('click', '.color-block', function () {
-    if($(this).hasClass(currentColor)) {
-      console.log('got it!');
+    if($(this).data('color') === currentColor) {
+      giveFeedback('You got it!');
+      pickColor();
     } else {
-      console.log('nope!')
+      giveFeedback('Nope. Try again.');
     }
   });
+
+  function giveFeedback(message) {
+    $feedback.text(message);
+  }
 
   function setPrompt() {
     $('#prompt').text('Please click the ' + currentColor + ' box!');
