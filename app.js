@@ -16,9 +16,14 @@ $(document).ready(function () {
   }
 
   pickColor();
+
+  function setPrompt() {
+    $('#prompt').text('Please click the ' + currentColor + ' box!');
+  }
   
   function pickColor() {
     currentColor = colors[randomNumber(0, colors.length - 1)];
+    setPrompt();
   }
 
 });
