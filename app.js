@@ -1,8 +1,17 @@
 $(document).ready(function () {
-  $blockContainer = $('#block-container');
+  var $blockContainer = $('#block-container'),
+      colors = [
+        "red",
+        "yellow",
+        "green",
+        "blue"
+      ];
 
-  for (var i = 0; i < 4; i++) {
-    $blockContainer.append('<div class="color-block"></div>');
+  for (var i = 0; i < colors.length; i++) {
+    var $block = $('<div class="color-block"></div>')
+      .css('background-color', colors[i]);
+
+    $blockContainer.append($block);
   }
 });
 
