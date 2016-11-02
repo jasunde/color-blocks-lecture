@@ -5,7 +5,8 @@ $(document).ready(function () {
         "yellow",
         "green",
         "blue"
-      ];
+      ],
+      currentColor = '';
 
   for (var i = 0; i < colors.length; i++) {
     var $block = $('<div class="color-block"></div>')
@@ -13,6 +14,13 @@ $(document).ready(function () {
 
     $blockContainer.append($block);
   }
+
+  pickColor();
+  
+  function pickColor() {
+    currentColor = colors[randomNumber(0, colors.length - 1)];
+  }
+
 });
 
 function randomNumber(min, max) {
